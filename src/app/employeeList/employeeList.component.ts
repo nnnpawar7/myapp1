@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-employee-list',
-    styleUrls: ['./EmployeeList.component.css'],
+    styleUrls: ['./employeeList.component.css'],
     templateUrl: './employeeList.component.html'
 })
 
