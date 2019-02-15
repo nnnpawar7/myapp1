@@ -1,0 +1,13 @@
+<p>
+    Both propert binding[] and interpolation",Double curly braces is called template expression, flows a data from component class proprty to html element property
+</p>
+<p><b>Interpolation is a special syntax that angular converts it into property binding  </b></p>
+<p>Interpolation<br><img src="{{imagepath}}"></p>
+<!-- <input type="text" [value]="name1" (input)="name1=$event.target.value"> -->
+<input type="text" [(ngModel)]="name1">
+<p>{{name1}}</p>
+<p>Hard Coded value concatination possible here in interpolation <b>{{'Firstname'+firstname}}</b></p>
+<p>Calculation<b>{{10+20}}</b></p>
+<p>Ternary operator (10+20==60)<b>{{10+20==60?' ok':' not ok'}}</b></p>
+<p *ngIf="empDetails">Ternary operator (10+20==60)<b>{{empDetails.empCode}}</b></p>
+<p>Property Binding<br><img [src]="imagepath"></p>

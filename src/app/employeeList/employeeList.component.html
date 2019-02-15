@@ -1,0 +1,32 @@
+<app-employee-count *ngIf="empList" (GenderChanged)="onEmployeeCountRadioButtonChange($event)" [all]="getEmpCount()" [male]="getMaleEmpCount()" [female]="getFemaleEmpCount()"></app-employee-count>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Dept</th>
+            <th>Address</th>
+            <th>Salary</th>
+            <th>Contact</th>
+            <th>Index</th>
+            <th style="widows: 200px;">DOB</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let emp of empList; trackBy:trackByEmpCode; let i=index">
+        <tr *ngIf="selectedEmployeeCountRadioButton=='All' || selectedEmployeeCountRadioButton==emp.Gender">
+            <td><a [routerLink]="['/employee',emp.empCode]">{{emp.empCode}}</a></td>
+            <td>{{emp.Name | EmployeeTitle:emp.Gender}}</td>
+            <td>{{emp.Dept}}</td>
+            <td>{{emp.Address}}</td>
+            <td>{{emp.Salary | currency: 'USD'}}</td>
+            <td>{{emp.Contact}}</td>
+            <td>{{i}}</td>
+            <td style="widows: 200px;">{{emp.DOB | date}}</td>
+        </tr>
+    </ng-container><br>
+</tbody>
+</table>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-info">Click</button> &nbsp;&nbsp;&nbsp;
+<button class="btn btn-info">Click</button>

@@ -1,0 +1,7 @@
+<h4>SHOW</h4><br>
+<b>All</b> ({{all}})<input value="All" type="radio" 
+    [(ngModel)]="SelectedGender" (change)="onRadioButtonSelectionChange('All')" name="list">
+<b>Male</b> ({{male}})<input value="Male" type="radio" 
+    [(ngModel)]="SelectedGender" (change)="onRadioButtonSelectionChange('Male')" name="list">
+<b>Female</b> ({{female}})<input value="Female" type="radio" 
+    [(ngModel)]="SelectedGender" (change)="onRadioButtonSelectionChange('Female')" name="list">
