@@ -1,7 +1,49 @@
+<table *ngIf="empDetails" border="1">
+  <thead>
+    <th colspan="2">Employee Details</th>
+
+  </thead>
+  <tbody>
+    <tr>
+      <td>empCode</td>
+      <td>{{empDetails.empCode}}</td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td>{{empDetails.Gender}}</td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td>{{empDetails.Name}}</td>
+    </tr>
+    <tr>
+      <td>Dept</td>
+      <td>{{empDetails.Dept}}</td>
+    </tr>
+    <tr>
+      <td>DOB</td>
+      <td>{{empDetails.DOB}}</td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td>{{empDetails.Address}}</td>
+    </tr>
+    <tr>
+      <td>Salary</td>
+      <td>{{empDetails.Salary}}</td>
+    </tr>
+    <tr>
+      <td>Contact</td>
+      <td>{{empDetails.Contact}}</td>
+    </tr>
+  </tbody>
+</table>
+
 <p>
-    Both propert binding[] and interpolation",Double curly braces is called template expression, flows a data from component class proprty to html element property
+  Both propert binding[] and interpolation",Double curly braces is called template expression, flows a data from
+  component class proprty to html element property
 </p>
-<p><b>Interpolation is a special syntax that angular converts it into property binding  </b></p>
+<p><b>Interpolation is a special syntax that angular converts it into property binding </b></p>
 <p>Interpolation<br><img src="{{imagepath}}"></p>
 <!-- <input type="text" [value]="name1" (input)="name1=$event.target.value"> -->
 <input type="text" [(ngModel)]="name1">

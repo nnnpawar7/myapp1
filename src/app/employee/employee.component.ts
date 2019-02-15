@@ -7,21 +7,27 @@ import { IEmployee } from './employee';
     selector: 'app-employee',
     templateUrl: './employee.component.html',
 })
+
 export class EmployeeComponent implements OnInit {
     firstname: string = 'Tom';
     lastname: string = 'Cruz';
     gender: string = 'Male';
     age: number = 51;
-    imagepath: string = '../../assets/images/Folder.jpg';
+    imagepath: string = '../../assets/images/Folder.png';
     isDisabled: boolean = true;
     name1: string = 'NILESH';
     empDetails: IEmployee;
-    constructor(private _activatedRoute: ActivatedRoute, private _employeeService: EmployeeService) { }
+
+    constructor(private _activatedRoute: ActivatedRoute, private _employeeService: EmployeeService) {
+    }
+
     ngOnInit(): void {
         const EmpCode: string = this._activatedRoute.snapshot.params['code'];
-        this._employeeService.getEmployeesDetails(EmpCode);
-        // .subscribe(data => {
-        //     this.empDetails = data;
-        // });
+        this._employeeService.getEmployeesDetails(EmpCode).then(data => {
+            this.empDetails = data;
+            console.log(this.empDetails)
+        }).catch((err) => {
+            console.log('--', err)
+        })
     }
 }
