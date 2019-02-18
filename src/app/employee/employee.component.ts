@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {EmployeeService} from './employee.service';
 import { IEmployee } from './employee';
+import { map, retry, catchError } from 'rxjs/operators';
+
 
 @Component({
     selector: 'app-employee',
