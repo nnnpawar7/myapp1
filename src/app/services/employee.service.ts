@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
-import { IEmployee } from './employee';
+import { IEmployee } from '../models/employee';
 import {HttpClient} from '@angular/common/http';
-import {EmplyeeModel} from './IEmployee.model';
+import {EmplyeeModel} from '../models/IEmployee.model';
 import { Observable} from 'rxjs';
-import { ajax } from 'rxjs/ajax';
-import { map, retry, catchError } from 'rxjs/operators';
-
 
 @Injectable()
 export class EmployeeService {   
 
-    configUrl = 'http://localhost:3000/things';
+    configUrl = 'http://localhost:3003/things';
     constructor(private http: HttpClient) { }
     getEmployees(): Observable<IEmployee[]> {
         return this.http.get<EmplyeeModel[]>(this.configUrl);

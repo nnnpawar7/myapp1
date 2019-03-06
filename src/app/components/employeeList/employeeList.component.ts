@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IEmployee } from '../employee/employee';
-import { EmployeeService } from '../employee/employee.service';
+import { IEmployee } from '../../models/employee';
+import { EmployeeService } from '../../services/employee.service';
 import { timer, interval } from 'rxjs';
-import { map, retryWhen, retry, delay, catchError, tap, delayWhen } from 'rxjs/operators';
+import { map, retryWhen, retry, delay, catchError, tap,take, delayWhen, scan} from 'rxjs/operators';
 @Component({
   selector: 'app-employee-list',
   styleUrls: ['./employeeList.component.css'],
@@ -27,7 +27,7 @@ export class EmployeeListComponent implements OnInit {
         retryWhen(errors =>
             errors.pipe(
                 tap(val => console.log('Value ',val.error.message, 'was too high!')),
-                delayWhen(val => timer(10000))
+                delay(3000),take(3)
             )
         ),
         catchError(err => {
@@ -35,9 +35,9 @@ export class EmployeeListComponent implements OnInit {
           return (err)
         })
     ).subscribe(data => {
-        var dta=[];
-        dta.push(data)
-        this.empList = dta[0];
+      var dta = [];
+      dta.push(data)
+      this.empList = dta[0];
     });
   }
   computeSalary(Salary: number): number {

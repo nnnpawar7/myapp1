@@ -1,0 +1,21 @@
+<h1>Student List</h1>
+<div class="row">
+  <div class="col-md-3" *ngFor="let student of Students">
+    <div class="card">
+      <img class="card-img-top" [src]="student.PhotoPath" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><b>Name :</b> {{student.fname}}</h5>
+        <p class="card-text"><b>DOB :</b> {{student.dob|date}}</p>
+        <p class="card-text"><b>Gender :</b> {{student.gender}}</p>
+        <p class="card-text"><b>Class :</b> {{student.Class}}</p>
+        <p class="card-text"><b>Grade :</b> {{student.grade|grade: student.grade}}</p>
+        <p class="card-text"><b>Contact:</b> {{student.contact}}</p>
+        <p class="card-text"><b>Email:</b> {{student.email}}</p>
+        <p class="card-text"><b>City:</b> {{student.address.city}}</p>
+        <p class="card-text"><b>Road:</b> {{student.address.road}}</p>
+        <p class="card-text"><b>Active:</b> {{student.isactive}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>

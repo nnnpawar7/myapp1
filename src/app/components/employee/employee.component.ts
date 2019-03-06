@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {EmployeeService} from './employee.service';
-import { IEmployee } from './employee';
+import {EmployeeService} from '../../services/employee.service';
+import { IEmployee } from '../../models/employee';
 import { map, retry, catchError } from 'rxjs/operators';
 
 
