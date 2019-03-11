@@ -1,32 +1,33 @@
 <div class="container">
   <h2>Add Student</h2>
-  {{fname}}
   <form #studentForm="ngForm" ngNativeValidate (ngSubmit)="createStudent(studentForm)">
     <div class="form-group">
       <label for="fname">Name:</label>
-      <input type="text" #fnames [(ngModel)]="student.fname" class="form-control input-sm" id="fname" placeholder="Enter name"
-        name="fname">
+      <input type="text" #fname="ngModel" required #fnames [(ngModel)]="student.fname" [class.is-invalid]="fname.invalid && fname.touched"
+        class="form-control input-sm" id="fname" placeholder="Enter name" name="fname">
     </div>
-{{fnames.className}}
+    {{fname.className|json}}
     <div class="form-group">
       <label for="dob">DOB:</label>
-      <input type="date" [(ngModel)]="student.dob" class="form-control input-sm" id="dob" placeholder="Enter dob" name="dob">
+      <input type="date" [(ngModel)]="student.dob" #dob="ngModel" class="form-control input-sm" id="dob" placeholder="Enter dob"
+        name="dob">
     </div>
-
+    {{dob.dirty}}
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" name="email" class="form-control input-sm" [(ngModel)]="student.email" id="email" placeholder="Enter email">
+      <input type="email" #email="ngModel" name="email" class="form-control input-sm" [(ngModel)]="student.email" id="email"
+        placeholder="Enter email">
     </div>
 
     <div ngModelGroup="address">
       <div class="form-group">
         <label for="city">City:</label>
-        <input type="text" name="city" class="form-control input-sm" [(ngModel)]="student.address.city" id="city"
+        <input type="text" name="city" class="form-control input-sm" [(ngModel)]="student.address.city" id="city" #city="ngModel"
           placeholder="Enter city">
       </div>
       <div class="form-group">
         <label for="email">Road:</label>
-        <input type="text" name="road" class="form-control input-sm" [(ngModel)]="student.address.road" id="road"
+        <input type="text" name="road" class="form-control input-sm" [(ngModel)]="student.address.road" id="road" #road="ngModel"
           placeholder="Enter road">
       </div>
     </div>
@@ -34,12 +35,13 @@
       <label for="male">Gender:</label>
       <div class="form-check">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" value="male" [(ngModel)]="student.gender" name="gender">Male
+          <input type="radio" class="form-check-input" value="male" [(ngModel)]="student.gender" name="gender" #gender="ngModel">Male
         </label>
       </div>
       <div class="form-check">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" value="female" [(ngModel)]="student.gender" name="gender">Female
+          <input type="radio" class="form-check-input" value="female" [(ngModel)]="student.gender" name="gender"
+            #gender="ngModel">Female
         </label>
       </div>
     </div>
@@ -64,10 +66,10 @@
 
     <div class="form-group">
       <label for="contact">Contact:</label>
-      <input type="number" [(ngModel)]="student.contact" max="9999999999" min="1000000000" class="form-control input-sm"
-        id="contact" placeholder="Enter mobile number" name="contact">
+      <input type="number" [(ngModel)]="student.contact" max="9999999999" [class.is-invalid]="contact.invalid" min="1000000000"
+        class="form-control input-sm" id="contact" placeholder="Enter mobile number" name="contact" #contact="ngModel">
     </div>
-
+    {{contact.pristine|json}}
     <div class="form-group">
       <label for="photo">Photo</label>
       <input type="text" class="form-control input-sm" id="PhotoPath" [(ngModel)]="student.PhotoPath" name="PhotoPath">
