@@ -2,7 +2,6 @@ import {Component, OnInit } from "@angular/core";
 import {NgForm } from "@angular/forms";
 import { StudentModel } from "../../models/Student.model"
 import { StudentsService } from "../../services/StudentsService.service"
-
 @Component({
   selector: 'create-student',
   templateUrl: './createStudent.component.html'
@@ -28,9 +27,21 @@ export class createStudent implements OnInit {
   
 
   constructor(private StudentsService: StudentsService) {}
+  title = 'abgular 4 with jquery';
+  
   createStudent(studentForm: NgForm) {
     console.log(studentForm.value)
+    this.StudentsService.createStudent(studentForm.value).subscribe(x=>{
+      console.log(x)
+    },
+    err=>{
+      console.log('Error',err)
+    },
+    ()=>{
+      console.log('Completed')
+    })
   }
+
   ngOnInit() {
     // console.log(this.StudentModel)
     this.StudentsService.getStudent()

@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="container-fluid">
+    <h2>Register</h2>
+    {{registrationForm.value|json}}
+    <form [formGroup]="registrationForm">
+      <div class="form-group">
+        <label for="username">username</label>
+        <input [class.is-invalid]="registrationForm.get('username').touched && registrationForm.get('username').invalid"
+          type="text" name="username" id="username" formControlName="username" class="form-control" placeholder="username"
+          aria-describedby="helpId">
+        <small id="helpId" [class.d-none]="registrationForm.get('username').untouched || registrationForm.get('username').valid"
+          class="text-muted">Username required</small>
+        <small id="helpId2" [class.d-none]="registrationForm.get('username').untouched && registrationForm.get('username').invalid"
+          class="text-muted">Username min length 30</small>
+
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" name="password" id="password" class="form-control"
+          placeholder="Password" aria-describedby="helpId">
+      </div>
+
+      <div class="form-group">
+        <label for="cpassword">Confirm Password</label>
+        <input type="password" name="cpassword" formControlName="cpassword" id="cpassword" class="form-control"
+          placeholder="Confirm Password" aria-describedby="helpId">
+      </div>
+
+
+      <div formGroupName="address">
+        <div class="form-group">
+          <label for="City">City</label>
+          <input type="text" name="city" formControlName="city" id="city" class="form-control" placeholder="Confirm Password"
+            aria-describedby="helpId">
+        </div>
+        <div class="form-group">
+          <label for="cpassword">State</label>
+          <input type="text" name="state" formControlName="state" id="state" class="form-control" placeholder="Confirm Password"
+            aria-describedby="helpId">
+        </div>
+        <div class="form-group">
+          <label for="zip">Zip</label>
+          <input type="number" name="zip" formControlName="zip" id="zip" class="form-control" placeholder="zip code"
+            aria-describedby="helpId">
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-primary" (click)="register(registrationForm.value)">Register</button>
+      <input type="reset" class="btn btn-secondary ml-2" value="Reset">
+
+      <!-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+        </div>
+
+        <div class="btn-group mr-2" role="group" aria-label="Second group">
+        </div>
+      </div> -->
+    </form>
+  </div>
+</div>
