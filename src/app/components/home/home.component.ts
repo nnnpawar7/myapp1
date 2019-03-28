@@ -12,7 +12,7 @@ export class HomeComponent {
     constructor(private _router: Router) {
      }
      onReClick() {
-         this._router.navigate(['/list'])
+         this._router.navigate(['/list']);
         }
 
 }

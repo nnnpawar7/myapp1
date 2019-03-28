@@ -12,25 +12,29 @@ import { HttpClientModule } from '@angular/common/http';
 import {Route, RouterModule} from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { StudentList } from './components/StudentList/StudentList.component';
-import { StudentsService } from './services/StudentsService.service'
-import { GradePipe } from './pipes/grade.pipe'
-import { createStudent } from './components/createStudent/createStudent.component'
+import { StudentsService } from './services/StudentsService.service';
+import { GradePipe } from './pipes/grade.pipe';
+import { createStudent } from './components/createStudent/createStudent.component';
+import { LoginComponent } from './components/login/login.component';
+import { EmployeeListResolverService } from './services/employee-list-resolver.service';
+
 const route: Route[] = [
   {path: 'home', component: HomeComponent},
-  {path: 'list', component: EmployeeListComponent},
+  {path: 'list', component: EmployeeListComponent, resolve: {employeeList: EmployeeListResolverService}},
   { path: 'employee/:code', component: EmployeeComponent },
   { path: 'student/list', component: StudentList },
-  { path: 'student/create', component: createStudent}
+  { path: 'student/create', component: createStudent},
+  { path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
   declarations: [GradePipe, createStudent, EmployeeTitlePipe, HomeComponent, EmployeeCountComponent,
-    EmployeeListComponent, AppComponent, EmployeeComponent, StudentList],
+    EmployeeListComponent, AppComponent, EmployeeComponent, LoginComponent, StudentList],
   imports: [
     RouterModule.forRoot(route),
     BrowserModule, AppRoutingModule, FormsModule, HttpClientModule
   ],
-  providers: [EmployeeService, StudentsService],
+  providers: [EmployeeService, StudentsService, EmployeeListResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IEmployee } from '../../models/employee';
 import { EmployeeService } from '../../services/employee.service';
 import { timer, interval } from 'rxjs';
-import { map, retryWhen, retry, delay, catchError, tap,take, delayWhen, scan} from 'rxjs/operators';
+import { map, retryWhen, retry, delay, catchError, tap, take, delayWhen, scan} from 'rxjs/operators';
 @Component({
   selector: 'app-employee-list',
   styleUrls: ['./employeeList.component.css'],
@@ -22,21 +22,21 @@ export class EmployeeListComponent implements OnInit {
             throw new Error('Value expected!');
           } else {
             return res;
-          };
+          }
         }),
         retryWhen(errors =>
             errors.pipe(
-                tap(val => console.log('Value ',val.error.message, 'was too high!')),
-                delay(3000),take(3)
+                tap(val => console.log('Value ', val.error.message, 'was too high!')),
+                delay(3000), take(3)
             )
         ),
         catchError(err => {
           console.log(err);
-          return (err)
+          return (err);
         })
     ).subscribe(data => {
-      var dta = [];
-      dta.push(data)
+      const dta = [];
+      dta.push(data);
       this.empList = dta[0];
     });
   }

@@ -5,9 +5,9 @@ import {EmplyeeModel} from '../models/IEmployee.model';
 import { Observable} from 'rxjs';
 
 @Injectable()
-export class EmployeeService {   
+export class EmployeeService {
 
-    configUrl = 'http://localhost:3003/things';
+    configUrl = 'http://localhost:3000/things';
     constructor(private http: HttpClient) { }
     getEmployees(): Observable<IEmployee[]> {
         return this.http.get<EmplyeeModel[]>(this.configUrl);

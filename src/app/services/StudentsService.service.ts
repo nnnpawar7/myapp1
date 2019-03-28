@@ -1,15 +1,15 @@
-import { Injectable } from "@angular/core";
-import { StudentModel } from "../models/Student.model"
-import { Observable, of } from "rxjs";
-import {HttpClient} from '@angular/common/http'
+import { Injectable } from '@angular/core';
+import { StudentModel } from '../models/Student.model';
+import { Observable, of } from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 @Injectable()
 
 export class StudentsService {
-  constructor(private _http: HttpClient){
+  constructor(private _http: HttpClient) {
   }
 
-  getStudent():Observable<StudentModel>{
-    return this._http.get<StudentModel>('http://localhost:3003/student/one');
+  getStudent(): Observable<StudentModel> {
+    return this._http.get<StudentModel>('http://localhost:3000/student/one');
   }
   getStudents(): Observable < StudentModel[] > {
     return of([{
@@ -24,7 +24,7 @@ export class StudentsService {
       contact: 9875451,
       isactive: true,
       PhotoPath: 'assets/images/Students/4e6c9641435441.57a5ca57a08fa.gif',
-      PhotoPreview:true
+      PhotoPreview: true
     }, {
       ID: 2,
       dob: '1995-06-10',
@@ -46,7 +46,7 @@ export class StudentsService {
       email: 'rvi@gore.com',
       Class: '1',
       address: { road: '21', city: 'NY' },
-      grade: {id:78,name:'First'},
+      grade: {id: 78, name: 'First'},
       contact: 9875451,
       isactive: true,
       PhotoPath: 'assets/images/Students/Human_icon-icons.com_71855.png',
