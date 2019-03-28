@@ -11,6 +11,9 @@ export class StudentsService {
   getStudent(): Observable<StudentModel> {
     return this._http.get<StudentModel>('http://localhost:3000/student/one');
   }
+  createStudent(student):any {
+    return this._http.post('http://localhost:3003/student/create', student)
+  }
   getStudents(): Observable < StudentModel[] > {
     return of([{
       ID: 1,
